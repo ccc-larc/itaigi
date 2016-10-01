@@ -7,6 +7,8 @@ import 有講法 from './有講法';
 import 無關鍵字 from './無關鍵字';
 import 其他建議 from './其他建議';
 import Promise from 'bluebird';
+import Disqus from '../../Disqus/Disqus';
+
 var superagent = require('superagent-promise')(require('superagent'), Promise);
 import './Kong.css';
 
@@ -85,6 +87,12 @@ class Kong extends React.Component {
           this.props.kongData.結果 >= 0 && this.props.kongData.內容.其他建議.length > 0 ?
           this.render其他建議() : ''
         }
+        <h3 className='ui horizontal divider header'>
+          <i className='outline comments icon'></i>
+          來討論
+          「<span className='ui pink header'>{this.props.kongData.關鍵字}</span>」
+        </h3>
+              <Disqus pathname={this.props.location.pathname}/>
       </div>
     </div>
     );
